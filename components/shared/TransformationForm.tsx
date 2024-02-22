@@ -31,7 +31,7 @@ export const formSchema = z.object({
   color: z.string().optional(),
   prompt: z.string().optional(),
   publicId: z.string(),
-  tranformationType: z.string(),
+  
 })
 
 const TransformationForm = ({ action, data = null, userId, type, creditBalance, config = null }: TransformationFormProps) => {
@@ -46,7 +46,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
   const initialValue = data && action === 'Update' ? {
     title: data?.title,
-    aspectRation: data?.aspectRatio,
+    aspectRatio: data?.aspectRatio,
     color: data?.color,
     prompt: data?.prompt,
     publicId: data?.publicId,
@@ -186,15 +186,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         {creditBalance <Math.abs(creditFee) && <InsufficientCreditsModal/>}
         <CustomField control={form.control} name="title" formLabel="Image Title" className="w-full" render={({ field }) => <Input {...field} className="input-field" />} />
 
-        <CustomField
-          control={form.control}
-          name="tranformationType"
-          formLabel="Transformation Type"
-          className="w-full"
-          render={({ field }) => (
-            <Input {...field} className="input-field" />
-          )}
-        />
+
 
         {type === 'fill' && (
           <CustomField control={form.control} name="aspectRatio" formLabel="Aspect Ratio" className="w-full" render={({ field }) => (
