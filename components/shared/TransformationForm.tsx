@@ -173,29 +173,18 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
   }
 
-  useEffect(() => {
-    if (image && (type === 'restore' || type === 'removeBackground')) {
+  useEffect(()=>{
+    if(image && (type === 'restore' || type==='removeBackground')){
       setNewTransformation(transformationType.config)
     }
 
-  }, [image, transformationType.config, type])
+  },[image,transformationType.config,type])
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />}
+        {creditBalance <Math.abs(creditFee) && <InsufficientCreditsModal/>}
         <CustomField control={form.control} name="title" formLabel="Image Title" className="w-full" render={({ field }) => <Input {...field} className="input-field" />} />
-
-        <CustomField
-          control={form.control}
-          name="tranformationType"
-          formLabel="Transformation Type"
-          className="w-full"
-          render={({ field }) => (
-            <Input {...field} className="input-field" />
-          )}
-        />
-
 
         {type === 'fill' && (
           <CustomField control={form.control} name="aspectRatio" formLabel="Aspect Ratio" className="w-full" render={({ field }) => (
