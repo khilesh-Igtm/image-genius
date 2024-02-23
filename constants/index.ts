@@ -1,5 +1,4 @@
-// this page provides the routing for navbar, like it has it's label and then it's destination and the image icon
-// this is created so that we can avoiding repeating same code in multiple files
+
 export const navLinks = [
   {
     label: "Home",

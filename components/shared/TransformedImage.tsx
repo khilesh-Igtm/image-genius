@@ -1,12 +1,16 @@
 "use client"
 import Image from "next/image"
+import React from 'react'
 import { CldImage, getCldImageUrl } from 'next-cloudinary'
 import { dataUrl, debounce, download, getImageSize } from '@/lib/utils'
 import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props'
+
+
 const TransformedImage = ({ image, type, title, transformationConfig, isTransforming, setIsTransforming, hasDownload = false }: TransformedImageProps) => {
 
   const downloadHandler=(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault();
+    
     download(getCldImageUrl({
       width:image?.width,
       height:image?.height,

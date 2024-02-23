@@ -1,11 +1,12 @@
 "use client";
-// this toast help us too provide the alert kind of message
+
 import { useToast } from "@/components/ui/use-toast"
 import { dataUrl,getImageSize } from "@/lib/utils";
-// this cldUpImage and CldUploadWidget allows us to upload images from muliptlr sources
+
 import { CldImage, CldUploadWidget } from "next-cloudinary"
 import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
 import Image from 'next/image'
+
 type MediaUploaderProps = {
   onValueChange: (value: string) => void;
   setImage: React.Dispatch<any>;
@@ -69,7 +70,6 @@ const MediaUploader = ({
           {publicId ? (
             <>
               <div className="curson-pointer overflow-hidden rounded-[10px]">
-                {/* here we are specifying the kind of image we want to upload */}
                 <CldImage
                   width={getImageSize(type, image, "width")}
                   height={getImageSize(type, image, "height")}

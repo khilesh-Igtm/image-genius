@@ -1,4 +1,4 @@
-"use client" // this is bcz without this usePathname() will not be accessible , here which means usepathname() is only used in client side
+"use client" 
 
 import {Sheet,SheetContent,SheetTrigger,} from "@/components/ui/sheet"
 import Link from "next/link"

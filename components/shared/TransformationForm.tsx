@@ -24,7 +24,6 @@ import { InsufficientCreditsModal } from "./InsufficientCreditsModal"
 
 
 
-// this will specify what kind of data will be in the form
 export const formSchema = z.object({
   title: z.string(),
   aspectRatio: z.string().optional(),
@@ -127,7 +126,6 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
     setIsSubmitting(false)
   }
 
-  // this is for generative fill page where we have to select from aspect ratio
   const onSelectFieldHandler = (value: string, onChangeField: (value: string) => void) => {
     const imageSize = aspectRatioOptions[value as AspectRatioKey]
     setImage((prevState: any) => ({
@@ -150,8 +148,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         ...prevState,
         [type]: {
           ...prevState?.[type],
-          [fieldName === 'prompt' ? 'prompt' : 'to']:
-            value
+          [fieldName === 'prompt' ? 'prompt' : 'to']: value
         }
       }))
 
@@ -191,6 +188,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         {type === 'fill' && (
           <CustomField control={form.control} name="aspectRatio" formLabel="Aspect Ratio" className="w-full" render={({ field }) => (
             <Select onValueChange={(value) => onSelectFieldHandler(value, field.onChange)} value={field.value}>
+
               <SelectTrigger className="select-field">
                 <SelectValue placeholder="Select size" />
               </SelectTrigger>
@@ -255,9 +253,10 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             {isTransforming ? 'Transforming...' : 'Apply Transformation'}
           </Button>
           <Button
+          type="submit"
             className="submit-button capitalize"
             disabled={isSubmitting}
-            type="submit">
+            >
             {isSubmitting ? 'Submitting...' : 'Save Image'}
           </Button>
         </div>

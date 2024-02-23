@@ -1,4 +1,4 @@
-"use server"; //this file contains many action related to server work
+"use server"; 
 
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database/mongoose";
